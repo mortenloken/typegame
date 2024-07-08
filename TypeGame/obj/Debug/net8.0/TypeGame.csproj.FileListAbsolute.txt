@@ -1,0 +1,17 @@
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/bin/Debug/net8.0/TypeGame
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/bin/Debug/net8.0/TypeGame.deps.json
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/bin/Debug/net8.0/TypeGame.runtimeconfig.json
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/bin/Debug/net8.0/TypeGame.dll
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/bin/Debug/net8.0/TypeGame.pdb
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/obj/Debug/net8.0/TypeGame.GeneratedMSBuildEditorConfig.editorconfig
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/obj/Debug/net8.0/TypeGame.AssemblyInfoInputs.cache
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/obj/Debug/net8.0/TypeGame.AssemblyInfo.cs
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/obj/Debug/net8.0/TypeGame.csproj.CoreCompileInputs.cache
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/obj/Debug/net8.0/TypeGame.dll
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/obj/Debug/net8.0/refint/TypeGame.dll
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/obj/Debug/net8.0/TypeGame.pdb
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/obj/Debug/net8.0/TypeGame.genruntimeconfig.cache
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/obj/Debug/net8.0/ref/TypeGame.dll
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/bin/Debug/net8.0/JetBrains.Annotations.dll
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/obj/Debug/net8.0/TypeGame.csproj.AssemblyReference.cache
+/Users/morten.loken/RiderProjects/TypeGame/TypeGame/obj/Debug/net8.0/TypeGame.csproj.Up2Date
