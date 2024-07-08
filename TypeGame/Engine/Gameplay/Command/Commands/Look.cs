@@ -1,4 +1,5 @@
-﻿using TypeGame.Engine.Util;
+﻿using TypeGame.Engine.Console;
+using TypeGame.Engine.Util;
 
 namespace TypeGame.Engine.Gameplay.Command.Commands;
 
@@ -12,8 +13,8 @@ public class Look : ICommand
     public Consequence Perform(Game game)
     {
         var scene = game.GetCurrentScene();
-        Console.WriteLine(scene.Description);
-        Console.WriteLine($"{scene.Preposition.Capitalize()} {scene.Name.ToLower()} ligger det {scene.Inventory}.");
+        GameConsole.Info(scene.Description);
+        GameConsole.Info($"{scene.Preposition.Capitalize()} {scene.Name.ToLower()} ligger det {scene.Inventory}.");
         return Consequence.None;
     }
 

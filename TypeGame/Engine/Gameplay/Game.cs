@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using TypeGame.Engine.Console;
 using TypeGame.Engine.Entity;
 using TypeGame.Engine.Gameplay.Command;
 using TypeGame.Engine.Gameplay.Command.Commands;
@@ -34,16 +35,18 @@ public class Game(Player player, IEnumerable<Scene> scenes, DateTime baseTime) {
         //initialize
         var presentScene = true;
 
+        //AnsiConsole.Write(new FigletText("Typegame!").LeftJustified().Color(Color.Red));
+
         //the main game loop
         while (true) {
             //parse the input to create a command
             var command = presentScene
                 ? new Peek(true)
-                : CommandParser.Parse(Console.ReadLine() ?? string.Empty);
+                : CommandParser.Parse(GameConsole.Ask("?"));
             presentScene = false;
 
             //clear the console
-            Console.Clear();
+            GameConsole.Clear();
     
             //add the time spend of the command
             _timeSpends.Add(command.Duration);
@@ -63,9 +66,8 @@ public class Game(Player player, IEnumerable<Scene> scenes, DateTime baseTime) {
                 consequence = consequence.Command.Perform(this);
             }
             
-            Console.WriteLine($"Klokka er {GetGameTime():HH:mm}.");
-            Console.WriteLine();
-            Console.Write("?? ");
+            GameConsole.Blank();
+            GameConsole.PreAsk($"Klokka er {GetGameTime():HH:mm}.");
         }
     }
     #endregion

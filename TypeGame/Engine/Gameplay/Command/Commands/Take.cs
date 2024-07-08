@@ -1,4 +1,6 @@
-﻿namespace TypeGame.Engine.Gameplay.Command.Commands;
+﻿using TypeGame.Engine.Console;
+
+namespace TypeGame.Engine.Gameplay.Command.Commands;
 
 public class Take(string item) : ICommand
 {
@@ -18,7 +20,7 @@ public class Take(string item) : ICommand
         var from = game.GetCurrentScene();
         var inventoryItem = from.Inventory.Get(item);
         if(inventoryItem == default) {
-            Console.WriteLine("Det du vil ta finnes ikke her.");
+            GameConsole.Error("Det du vil ta finnes ikke her.");
         }
         else
         {
@@ -27,7 +29,7 @@ public class Take(string item) : ICommand
             from.Inventory.TransferTo(game.Player.Inventory, inventoryItem.Item, count);
 
             //inform
-            Console.WriteLine($"Du tar {count} {inventoryItem.Item.Name.ToLower()}.");
+            GameConsole.Confirm($"Du tar {count} {inventoryItem.Item.Name.ToLower()}.");
         }
 
         return Consequence.WithCommand(new Inventory());

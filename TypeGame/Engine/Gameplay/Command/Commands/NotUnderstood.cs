@@ -1,4 +1,6 @@
-﻿namespace TypeGame.Engine.Gameplay.Command.Commands;
+﻿using TypeGame.Engine.Console;
+
+namespace TypeGame.Engine.Gameplay.Command.Commands;
 
 public class NotUnderstood : ICommand
 {
@@ -6,7 +8,7 @@ public class NotUnderstood : ICommand
 
     public Consequence Perform(Game game)
     {
-        Console.WriteLine("Jeg forstod ikke hva du mente. Prøv igjen.");
+        GameConsole.Error("Jeg forstod ikke hva du mente. Prøv igjen.");
         return Consequence.None;
     }
     public TimeSpan Duration => TimeSpan.Zero;

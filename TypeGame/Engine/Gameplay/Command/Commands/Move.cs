@@ -1,4 +1,6 @@
-﻿namespace TypeGame.Engine.Gameplay.Command.Commands;
+﻿using TypeGame.Engine.Console;
+
+namespace TypeGame.Engine.Gameplay.Command.Commands;
 
 public class Move(string to) : ICommand
 {
@@ -22,10 +24,10 @@ public class Move(string to) : ICommand
         var fromScene = game.GetCurrentScene();
         var toScene = game.GetScene(to);
         if(toScene == null) {
-            Console.WriteLine("Jeg forstår ikke hvor du vil gå.");
+            GameConsole.Error("Jeg forstår ikke hvor du vil gå.");
         }
         else if(toScene == fromScene) {
-            Console.WriteLine($"Du er allerede {fromScene.Preposition} {fromScene.Name}.");
+            GameConsole.Error($"Du er allerede {fromScene.Preposition} {fromScene.Name}.");
         }
         else
         {
@@ -34,7 +36,7 @@ public class Move(string to) : ICommand
             toScene.Add(game.Player);
         
             //inform
-            Console.WriteLine($"Du går fra {fromScene.Name.ToLower()} til {toScene.Name.ToLower()}.");
+            GameConsole.Confirm($"Du går fra {fromScene.Name.ToLower()} til {toScene.Name.ToLower()}.");
         }
         
         return Consequence.None;

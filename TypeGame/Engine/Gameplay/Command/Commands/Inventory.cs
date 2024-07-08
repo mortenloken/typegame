@@ -1,4 +1,6 @@
-﻿namespace TypeGame.Engine.Gameplay.Command.Commands;
+﻿using TypeGame.Engine.Console;
+
+namespace TypeGame.Engine.Gameplay.Command.Commands;
 
 /// <summary>
 /// This command is used to display the player's inventory.
@@ -12,7 +14,7 @@ public class Inventory : ICommand
 
     public Consequence Perform(Game game)
     {
-        Console.WriteLine($"Du har {game.Player.Inventory}.");
+        GameConsole.Info($"Du har {game.Player.Inventory}.");
         return Consequence.None;
     }
 

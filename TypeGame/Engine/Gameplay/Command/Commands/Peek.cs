@@ -1,4 +1,6 @@
-﻿namespace TypeGame.Engine.Gameplay.Command.Commands;
+﻿using TypeGame.Engine.Console;
+
+namespace TypeGame.Engine.Gameplay.Command.Commands;
 
 public class Peek(bool details) : ICommand
 {
@@ -12,7 +14,7 @@ public class Peek(bool details) : ICommand
         var scene = game.GetCurrentScene();
         if (details)
         {
-            Console.WriteLine($"Du er {scene.Preposition} {scene.Name.ToLower()}.");
+            GameConsole.Info($"Du er {scene.Preposition} {scene.Name.ToLower()}.");
         }
         return Consequence.None;
     }
