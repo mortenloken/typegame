@@ -1,4 +1,4 @@
-﻿namespace TypeGame.Engine.Gameplay.Command;
+﻿namespace TypeGame.Engine.Gameplay.Command.Commands;
 
 public class Move(string to) : ICommand
 {

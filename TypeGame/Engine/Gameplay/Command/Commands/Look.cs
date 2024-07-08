@@ -1,6 +1,6 @@
 ﻿using TypeGame.Engine.Util;
 
-namespace TypeGame.Engine.Gameplay.Command;
+namespace TypeGame.Engine.Gameplay.Command.Commands;
 
 public class Look : ICommand
 {
