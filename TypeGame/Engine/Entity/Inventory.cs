@@ -10,33 +10,39 @@ public class Inventory(IEnumerable<InventoryItem> items)
 
     public InventoryItem? Get(string item)
         => _items.FirstOrDefault(x => x.Item.Aliases.Contains(item, StringComparer.CurrentCultureIgnoreCase));
-    
-    public void Add(Item item, int count)
+
+    public void TransferTo(Inventory target, Item item, int count)
     {
-        var exists = _items.FirstOrDefault(x => x.Item == item);
-        if (exists != default)
+        //find the item in the source inventory
+        var sourceItem = _items.FirstOrDefault(x => x.Item == item);
+        if (sourceItem == default)
         {
-            exists.Count += count;
+            throw new ApplicationException("Item not found in source inventory");
+        }
+
+        //resolve how many to transfer
+        var transfer = count <= sourceItem.Count 
+            ? count 
+            : sourceItem.Count;
+
+        //deduct from source
+        sourceItem.Count -= transfer;
+        if (sourceItem.Count <= 0)
+        {
+            _items.Remove(sourceItem);
+        }
+
+        //add to target
+        var targetItem = target._items.FirstOrDefault(x => x.Item == item);
+        if(targetItem == default)
+        {
+            target._items.Add(new InventoryItem(item, transfer));
         }
         else
         {
-            _items.Add(new InventoryItem(item, count));
+            targetItem.Count += transfer;
         }
     }
-    
-    public void Remove(Item item, int count)
-    {
-        var exists = _items.FirstOrDefault(x => x.Item == item);
-        if (exists != default)
-        {
-            exists.Count -= count;
-            if (exists.Count <= 0)
-            {
-                _items.Remove(exists);
-            }
-        }
-    }
-
     
     public override string ToString()
         => StringUtil.ListItems(_items.Select(x => $"{x.Count} {x.Item.Name.ToLower()}").ToArray());

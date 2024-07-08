@@ -6,6 +6,8 @@ public interface ICommand
 {
     [UsedImplicitly]
     static abstract ICommand? Accept(string input);
+
     Consequence Perform(Game game);
+    
     TimeSpan Duration { get; }
 }

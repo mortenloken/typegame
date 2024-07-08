@@ -24,8 +24,7 @@ public class Take(string item) : ICommand
         {
             //do the transaction
             var count = inventoryItem.Count;
-            from.Inventory.Remove(inventoryItem.Item, count);
-            game.Player.Inventory.Add(inventoryItem.Item, count);
+            from.Inventory.TransferTo(game.Player.Inventory, inventoryItem.Item, count);
 
             //inform
             Console.WriteLine($"Du tar {count} {inventoryItem.Item.Name.ToLower()}.");

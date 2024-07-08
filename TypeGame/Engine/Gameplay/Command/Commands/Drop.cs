@@ -25,8 +25,7 @@ public class Drop(string item) : ICommand
             //do the transaction
             var scene = game.GetCurrentScene();
             var count = inventoryItem.Count;
-            game.Player.Inventory.Remove(inventoryItem.Item, count);
-            scene.Inventory.Add(inventoryItem.Item, count);
+            game.Player.Inventory.TransferTo(scene.Inventory, inventoryItem.Item, count);
 
             //inform
             Console.WriteLine($"Du slipper {count} {inventoryItem.Item.Name.ToLower()}.");

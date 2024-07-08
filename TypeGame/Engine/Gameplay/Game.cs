@@ -23,7 +23,7 @@ public class Game(Player player, IEnumerable<Scene> scenes, DateTime baseTime) {
     public Scene? GetScene(string scene)
         => Scenes.SingleOrDefault(x => x.Aliases.Contains(scene, StringComparer.CurrentCultureIgnoreCase));
 
-    private DateTime GetGameTime() 
+    private DateTime GetGameTime()
         => baseTime //the start of the game
            + _stopWatch.Elapsed // actual time spent playing the game
            + _timeSpends.Aggregate((a, b) => a + b); //time spent on commands
