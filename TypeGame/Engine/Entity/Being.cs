@@ -1,5 +1,5 @@
 namespace TypeGame.Engine.Entity;
 
-public abstract class Being {
-    
+public abstract class Being
+{
 }

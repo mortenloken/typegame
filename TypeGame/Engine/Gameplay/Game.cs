@@ -23,9 +23,9 @@ public class Game(Player player, IEnumerable<Scene> scenes, DateTime baseTime) {
         => Scenes.SingleOrDefault(x => x.Aliases.Contains(scene, StringComparer.CurrentCultureIgnoreCase));
 
     private DateTime GetGameTime() 
-        => baseTime //the start of the gage
+        => baseTime //the start of the game
            + _stopWatch.Elapsed // actual time spent playing the game
-           + _timeSpends.Aggregate((a, b) => a + b); //time spent on actions
+           + _timeSpends.Aggregate((a, b) => a + b); //time spent on commands
     #endregion
     
     #region Main game loop
@@ -55,11 +55,11 @@ public class Game(Player player, IEnumerable<Scene> scenes, DateTime baseTime) {
                 break;
             }
 
-            //consequential command ?
-            if (consequence.Command is not null)
+            //cascading consequences
+            while (consequence.Command is not null)
             {
                 _timeSpends.Add(consequence.Command.Duration);
-                consequence.Command.Perform(this);
+                consequence = consequence.Command.Perform(this);
             }
             
             Console.WriteLine($"Klokka er {GetGameTime():HH:mm}.");

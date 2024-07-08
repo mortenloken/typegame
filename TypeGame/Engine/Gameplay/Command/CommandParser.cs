@@ -2,6 +2,9 @@ using System.Reflection;
 
 namespace TypeGame.Engine.Gameplay.Command;
 
+/// <summary>
+/// Parses the input string into a command.
+/// </summary>
 public static class CommandParser {
     private static readonly List<Type> CommandTypes = Assembly
         .GetExecutingAssembly()
@@ -9,18 +12,18 @@ public static class CommandParser {
         .Where(t => 
             t.IsAssignableTo(typeof(ICommand)) 
             && !t.IsAbstract
-            && t != typeof(NotUnderstood) //ignore this "system" action
+            && t != typeof(NotUnderstood) //ignore this "system" command
         )
         .ToList();
     
     public static ICommand Parse(string input)
     {
-        //return the first actions that accepts the input
+        //return the first command that accepts the input
         foreach (var commandType in CommandTypes)
         {
-            if (commandType.GetMethod("Accept")?.Invoke(null, [input.ToLower()]) is ICommand action)
+            if (commandType.GetMethod("Accept")?.Invoke(null, [input.ToLower()]) is ICommand command)
             {
-                return action;
+                return command;
             }
         }
         return new NotUnderstood();

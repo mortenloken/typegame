@@ -1,5 +1,5 @@
 namespace TypeGame.Engine.Entity;
 
-public abstract class Animal : Being {
-    
+public abstract class Animal : Being
+{
 }

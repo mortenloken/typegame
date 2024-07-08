@@ -4,10 +4,11 @@ public class Scene(
     string name,
     string[] aliases,
     string preposition,
-    string description, 
+    string description,
     Inventory inventory,
     Being[] beings
-) {
+)
+{
     public string Name { get; } = name;
     public string[] Aliases { get; } = aliases;
     public string Description { get; } = description;
@@ -16,17 +17,20 @@ public class Scene(
 
     //the beings in the scene
     private readonly List<Being> _beings = beings.ToList();
-    
+
     #region Being methods and properties
     public bool Contains(Being being) => _beings.Contains(being);
 
-    public void Add(Being being) {
-        if (!_beings.Contains(being)) {
+    public void Add(Being being)
+    {
+        if (!_beings.Contains(being))
+        {
             _beings.Add(being);
         }
     }
-    
-    public void Remove(Being being) {
+
+    public void Remove(Being being)
+    {
         _beings.Remove(being);
     }
     #endregion

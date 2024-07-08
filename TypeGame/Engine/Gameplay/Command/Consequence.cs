@@ -1,5 +1,9 @@
 ﻿namespace TypeGame.Engine.Gameplay.Command;
 
+/// <summary>
+/// Represents the consequence of a command.
+/// </summary>
+/// <param name="quitGame"></param>
 public class Consequence(bool quitGame)
 {
     public static readonly Consequence None = new(false);
