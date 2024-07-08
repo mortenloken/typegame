@@ -12,11 +12,9 @@ public class Inventory : ICommand
             ? new Inventory()
             : default;
 
-    public Consequence Perform(Game game)
+    public Consequence Execute(Game game)
     {
         GameConsole.Info($"Du har {game.Player.Inventory}.");
         return Consequence.None;
     }
-
-    public TimeSpan Duration => TimeSpan.Zero;
 }

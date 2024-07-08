@@ -22,5 +22,8 @@ public static class GameConsole
     public static void PreAsk(string s) 
         => AnsiConsole.MarkupLine($"[yellow]{s}[/]");
 
+    public static void Figlet(string s) 
+        => AnsiConsole.Write(new FigletText(s).LeftJustified().Color(Color.Blue));
+
     public static string Ask(string s) => AnsiConsole.Ask<string>($"[yellow]{s}[/]");
 }

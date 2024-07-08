@@ -10,13 +10,11 @@ public class Look : ICommand
             ? new Look()
             : default;
 
-    public Consequence Perform(Game game)
+    public Consequence Execute(Game game)
     {
         var scene = game.GetCurrentScene();
         GameConsole.Info(scene.Description);
         GameConsole.Info($"{scene.Preposition.Capitalize()} {scene.Name.ToLower()} ligger det {scene.Inventory}.");
         return Consequence.None;
     }
-
-    public TimeSpan Duration => TimeSpan.Zero;
 }

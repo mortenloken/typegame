@@ -15,11 +15,12 @@ public class Take(string item) : ICommand
         return default;
     }
 
-    public Consequence Perform(Game game)
+    public Consequence Execute(Game game)
     {
         var from = game.GetCurrentScene();
         var inventoryItem = from.Inventory.Get(item);
-        if(inventoryItem == default) {
+        if (inventoryItem == default)
+        {
             GameConsole.Error("Det du vil ta finnes ikke her.");
         }
         else
@@ -32,8 +33,10 @@ public class Take(string item) : ICommand
             GameConsole.Confirm($"Du tar {count} {inventoryItem.Item.Name.ToLower()}.");
         }
 
-        return Consequence.WithCommand(new Inventory());
+        return new Consequence
+        {
+            Duration = TimeSpan.FromSeconds(5),
+            Command = new Inventory()
+        };
     }
-
-    public TimeSpan Duration => TimeSpan.FromSeconds(5);
 }

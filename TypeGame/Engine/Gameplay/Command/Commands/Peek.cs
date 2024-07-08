@@ -9,7 +9,7 @@ public class Peek(bool details) : ICommand
             ? new Peek(true)
             : default;
 
-    public Consequence Perform(Game game)
+    public Consequence Execute(Game game)
     {
         var scene = game.GetCurrentScene();
         if (details)
@@ -18,6 +18,4 @@ public class Peek(bool details) : ICommand
         }
         return Consequence.None;
     }
-
-    public TimeSpan Duration => TimeSpan.Zero;
 }

@@ -2,13 +2,13 @@
 
 public class Quit : ICommand
 {
+    private static readonly string[] Inputs = ["stopp", "slutt", "avslutt", "quit", "exit"];
+    
     public static ICommand? Accept(string input)
-        => input.Equals("slutt", StringComparison.InvariantCulture)
+        => Inputs.Contains(input.Trim(), StringComparer.InvariantCultureIgnoreCase)
             ? new Quit()
             : default;
 
-    public Consequence Perform(Game game) 
+    public Consequence Execute(Game game) 
         => Consequence.Quit;
-
-    public TimeSpan Duration => TimeSpan.Zero;
 }

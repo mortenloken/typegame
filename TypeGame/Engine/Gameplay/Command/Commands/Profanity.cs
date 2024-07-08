@@ -11,10 +11,9 @@ public class Profanity(string input) : ICommand
             ? new Profanity(input)
             : default;
 
-    public Consequence Perform(Game game)
+    public Consequence Execute(Game game)
     {
         GameConsole.Info($"{input.ToUpper()} kan du være selv!");
         return Consequence.None;
     }
-    public TimeSpan Duration => TimeSpan.Zero;
 }

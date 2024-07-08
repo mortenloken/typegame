@@ -35,8 +35,12 @@ public class Game(Player player, IEnumerable<Scene> scenes, DateTime baseTime) {
         //initialize
         var presentScene = true;
 
-        //AnsiConsole.Write(new FigletText("Typegame!").LeftJustified().Color(Color.Red));
-
+        GameConsole.Figlet("Typegame!");
+        GameConsole.Blank();
+        GameConsole.Info("Velkommen til Typegame!");
+        GameConsole.Info("Trykk en tast for å starte spillet!");
+        System.Console.ReadLine();
+        
         //the main game loop
         while (true) {
             //parse the input to create a command
@@ -48,11 +52,13 @@ public class Game(Player player, IEnumerable<Scene> scenes, DateTime baseTime) {
             //clear the console
             GameConsole.Clear();
     
-            //add the time spend of the command
-            _timeSpends.Add(command.Duration);
 
             //perform the command
-            var consequence = command.Perform(this);
+            var consequence = command.Execute(this);
+
+            //add the time spend of the command
+            _timeSpends.Add(consequence.Duration);
+            
             if (consequence.QuitGame)
             {
                 //exit main game loop
@@ -62,12 +68,12 @@ public class Game(Player player, IEnumerable<Scene> scenes, DateTime baseTime) {
             //cascading consequences
             while (consequence.Command is not null)
             {
-                _timeSpends.Add(consequence.Command.Duration);
-                consequence = consequence.Command.Perform(this);
+                consequence = consequence.Command.Execute(this);
+                _timeSpends.Add(consequence.Duration);
             }
             
             GameConsole.Blank();
-            GameConsole.PreAsk($"Klokka er {GetGameTime():HH:mm}.");
+            GameConsole.PreAsk($"Klokka er {GetGameTime():HH:mm:ss}.");
         }
     }
     #endregion

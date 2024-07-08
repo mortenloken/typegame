@@ -15,7 +15,7 @@ public class Drop(string item) : ICommand
         return default;
     }
 
-    public Consequence Perform(Game game)
+    public Consequence Execute(Game game)
     {
         //resolve the item
         var inventoryItem = game.Player.Inventory.Get(item);
@@ -33,8 +33,10 @@ public class Drop(string item) : ICommand
             GameConsole.Confirm($"Du slipper {count} {inventoryItem.Item.Name.ToLower()}.");
         }
 
-        return Consequence.WithCommand(new Inventory());
+        return new Consequence
+        {
+            Duration = TimeSpan.FromSeconds(5),
+            Command = new Inventory()
+        };
     }
-
-    public TimeSpan Duration => TimeSpan.FromSeconds(3);    
 }

@@ -1,19 +1,29 @@
 ﻿namespace TypeGame.Engine.Gameplay.Command;
 
-/// <summary>
-/// Represents the consequence of a command.
-/// </summary>
-/// <param name="quitGame"></param>
-public class Consequence(bool quitGame)
+public class Consequence
 {
-    public static readonly Consequence None = new(false);
-    public static readonly Consequence Quit = new(true);
-    public static Consequence WithCommand(ICommand command) 
-        => new(false, command);
+    public static readonly Consequence None = new()
+    {
+        Duration = TimeSpan.Zero,
+        QuitGame = false,
+        Command = null
+    };
     
-    public bool QuitGame { get; } = quitGame;
-    public ICommand? Command { get; }
-
-    private Consequence(bool quitGame, ICommand command) : this(quitGame) 
-        => Command = command;
+    public static Consequence Durate(TimeSpan duration) => new()
+    {
+        Duration = duration,
+        QuitGame = false,
+        Command = null
+    };
+    
+    public static readonly Consequence Quit = new()
+    {
+        Duration = TimeSpan.Zero,
+        QuitGame = true,
+        Command = null
+    };
+    
+    public TimeSpan Duration { get; init; } = TimeSpan.Zero;
+    public bool QuitGame { get; init; }
+    public ICommand? Command { get; init; }
 }

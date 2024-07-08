@@ -2,24 +2,24 @@
 
 namespace TypeGame.Engine.Gameplay.Command.Commands;
 
-public class Move(string to) : ICommand
+public class Walk(string to) : ICommand
 {
     public static ICommand? Accept(string input)
     {
         var parts = input.Split(' ');
         if (input.StartsWith("gå") && parts.Length == 2)
         {
-            return new Move(parts[1]);
+            return new Walk(parts[1]);
         }
         if (input.StartsWith("gå til") && parts.Length == 3)
         {
-            return new Move(parts[2]);
+            return new Walk(parts[2]);
         }
 
         return default;
     }
 
-    public Consequence Perform(Game game)
+    public Consequence Execute(Game game)
     {
         var fromScene = game.GetCurrentScene();
         var toScene = game.GetScene(to);
@@ -39,8 +39,6 @@ public class Move(string to) : ICommand
             GameConsole.Confirm($"Du går fra {fromScene.Name.ToLower()} til {toScene.Name.ToLower()}.");
         }
         
-        return Consequence.None;
+        return Consequence.Durate(TimeSpan.FromMinutes(1));
     }
-
-    public TimeSpan Duration => TimeSpan.FromMinutes(1);
 }
