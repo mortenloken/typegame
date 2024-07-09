@@ -24,10 +24,14 @@ public class Walk(string to) : ICommand
         var fromScene = game.GetCurrentScene();
         var toScene = game.GetScene(to);
         if(toScene == null) {
-            GameConsole.Error("Jeg forstår ikke hvor du vil gå.");
+            GameConsole.Error($"'{to}' er ikke et sted jeg kjenner til.");
         }
         else if(toScene == fromScene) {
             GameConsole.Error($"Du er allerede {fromScene.Preposition} {fromScene.Name}.");
+        }
+        else if (!fromScene.IsConnectedTo(toScene))
+        {
+            GameConsole.Error($"Du går ikke an å gå fra {fromScene.Name.ToLower()} til {toScene.Name.ToLower()}.");
         }
         else
         {

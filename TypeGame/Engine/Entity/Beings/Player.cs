@@ -1,4 +1,6 @@
-namespace TypeGame.Engine.Entity;
+using TypeGame.Engine.Entity.Things;
+
+namespace TypeGame.Engine.Entity.Beings;
 
 public class Player(string name, Inventory inventory) : Being
 {

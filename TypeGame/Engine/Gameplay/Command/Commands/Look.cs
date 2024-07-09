@@ -15,6 +15,7 @@ public class Look : ICommand
         var scene = game.GetCurrentScene();
         GameConsole.Info(scene.Description);
         GameConsole.Info($"{scene.Preposition.Capitalize()} {scene.Name.ToLower()} ligger det {scene.Inventory}.");
+        GameConsole.Info($"Herfra kan du se {StringUtil.ListItems(scene.Links.Select(x => x.To.Name.ToLower()).ToArray())}.");
         return Consequence.None;
     }
 }

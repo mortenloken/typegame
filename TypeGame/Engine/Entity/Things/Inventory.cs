@@ -1,6 +1,6 @@
 ﻿using TypeGame.Engine.Util;
 
-namespace TypeGame.Engine.Entity;
+namespace TypeGame.Engine.Entity.Things;
 
 public class Inventory(IEnumerable<InventoryItem> items)
 {

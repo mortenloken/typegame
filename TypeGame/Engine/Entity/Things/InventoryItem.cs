@@ -1,4 +1,4 @@
-﻿namespace TypeGame.Engine.Entity;
+﻿namespace TypeGame.Engine.Entity.Things;
 
 public class InventoryItem(Item item, int count)
 {

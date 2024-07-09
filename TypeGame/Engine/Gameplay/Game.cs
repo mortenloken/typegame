@@ -1,7 +1,8 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using TypeGame.Engine.Console;
-using TypeGame.Engine.Entity;
+using TypeGame.Engine.Entity.Beings;
+using TypeGame.Engine.Entity.Geo;
 using TypeGame.Engine.Gameplay.Command;
 using TypeGame.Engine.Gameplay.Command.Commands;
 
